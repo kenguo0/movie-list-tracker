@@ -1,0 +1,94 @@
+body {
+    font-family: "Roboto", sans-serif;
+    list-style-type: none;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.results--header {
+    color: #fff;
+    padding-left: 50px;
+    padding-top: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #353535;
+    font-size: 3rem;
+    color: #fff;
+    box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    transition: all 500ms;
+    overflow: hidden;
+}
+
+.card:hover {
+    box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em, rgba(2, 8, 20, 0.08) 0px 0.175em 0.5em;
+    transform: translateY(-3px) scale(1.05);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.title a {
+    font-size: 24pt;
+    text-decoration: none;
+    color: white;
+}
+
+.card:hover .title {
+    visibility: visible;
+    cursor: pointer;
+}
+
+.grid {
+    margin: auto;
+    width: 90%;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media screen and (max-width: 1040px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .results--header {
+        font-size: 24pt;
+        padding-left: 25px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .results--header {
+        font-size: large;
+        padding-left: 16pt;
+    }
+}

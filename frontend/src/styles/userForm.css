@@ -1,0 +1,74 @@
+.user--div {
+    width: 360px;
+    padding: 4rem 0;
+    margin: auto;
+}
+
+.user--form {
+    position: relative;
+    background: #ffffff;
+    border-radius: 10px;
+    max-width: 360px;
+    padding: 45px;
+    text-align: center;
+}
+
+.user--form input {
+    background: #f2f2f2;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.user--form input:focus::placeholder {
+    color: transparent;
+}
+
+.user--form span {
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    color: rgb(76, 64, 119);
+    margin-bottom: 25px;
+    display: block;
+}
+
+.register--message {
+    color: black;
+    padding-top: 50px;
+    padding-left: 15px;
+}
+
+.error {
+    margin: 10px 0 15px;
+    color: rgba(255, 0, 0, 0.603);
+    font-family: sans-serif;
+    font-weight: 700;
+}
+
+.input {
+    display: flex;
+    font-family: sans-serif;
+}
+
+.login--button {
+    background-color: rgb(76, 64, 119);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px 20px;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.3s;
+}
+
+.login--button:hover {
+    background-color: #332a52;
+}
