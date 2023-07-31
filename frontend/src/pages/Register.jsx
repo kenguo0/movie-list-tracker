@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import "../styles/userForm.css";
-import Modal from "../components/Modal";
+import RegisterModal from "../components/RegisterModal";
 
 export default function Register() {
     const [username, setUsername] = useState("");
@@ -39,7 +39,6 @@ export default function Register() {
         })
             .then((response) => {
                 if (response.status === 200) {
-                    console.log(response.text());
                     setShowModal(true);
                 } else {
                     return response.text();
@@ -75,7 +74,7 @@ export default function Register() {
                     </button>
                 </form>
             </div>
-            {showModal ? <Modal className="fade-up" toggleModal={setShowModal} /> : null}
+            {showModal ? <RegisterModal className="fade-up" toggleModal={setShowModal} /> : null}
         </>
     );
 }

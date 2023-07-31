@@ -17,6 +17,19 @@ export default function Home({ apiKey }) {
                 .then((data) => {
                     setPopularMovies(data.results);
                 });
+
+            if (localStorage.getItem("genresData") === null) {
+                fetch("https://api.themoviedb.org/3/genre/movie/list", {
+                    headers: {
+                        accept: "application/json",
+                        Authorization: "Bearer ".concat(apiKey),
+                    },
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        localStorage.setItem("genresData", JSON.stringify(data.genres));
+                    });
+            }
         }
     }, [apiKey]);
 

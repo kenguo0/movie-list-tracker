@@ -26,14 +26,12 @@ public class UserMovie {
     @JoinColumn(name = "movie_id")
     private Movie movie;
 
-    private Boolean watched;
+    private String watchStatus;
 
     @Column(nullable = true)
-    private Long rating;
+    private Integer rating;
 
-    private Boolean watchlist;
-
-    public void setRating(Long rating) {
+    public void setRating(Integer rating) {
         if (rating > 1) {
             this.rating = rating;
         } else {

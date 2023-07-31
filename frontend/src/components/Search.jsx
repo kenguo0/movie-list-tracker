@@ -24,7 +24,7 @@ export default function Search({ onSend, apiKey }) {
 
     return (
         <form className="search" onSubmit={sendResults}>
-            <input type="text" placeholder="Search movies, TV shows" className="search--input" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+            <input type="text" placeholder="Search for movies..." className="search--input" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
             <button className="search--button" onClick={sendResults}>
                 <img className="search--image" src={searchIcon} />
             </button>

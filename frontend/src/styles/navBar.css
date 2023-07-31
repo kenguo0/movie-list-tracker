@@ -85,6 +85,10 @@ nav {
     background-color: rgb(51, 42, 82);
 }
 
+.auth--button:focus {
+    outline: none;
+}
+
 .nav--links {
     display: flex;
     align-items: center;
@@ -189,6 +193,11 @@ nav {
         width: 60px;
         margin-left: 5px;
         padding-top: 15px;
+    }
+
+    .auth--button {
+        padding: 5px 10px;
+        font-size: 10pt;
     }
 
     .mobile--button i {

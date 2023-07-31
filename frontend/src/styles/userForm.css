@@ -72,3 +72,7 @@
 .login--button:hover {
     background-color: #332a52;
 }
+
+.login--button:focus {
+    outline: none;
+}

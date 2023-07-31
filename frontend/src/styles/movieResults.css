@@ -71,9 +71,41 @@ img {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
+.list--header {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.userList--grid {
+    margin: auto;
+    width: 90%;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    display: grid;
+    justify-content: center;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, 300px);
+}
+
+.select--userList,
+.select--genre {
+    border: none;
+    outline: none;
+    padding: 10px 10px;
+    border-radius: 4px;
+    font-size: 18pt;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
 @media screen and (max-width: 1040px) {
     .grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .userList--grid {
+        grid-template-columns: repeat(auto-fill, 190px);
     }
 
     .results--header {
@@ -87,8 +119,31 @@ img {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
 
+    .userList--grid {
+        grid-template-columns: repeat(auto-fill, 150px);
+    }
+
     .results--header {
         font-size: large;
         padding-left: 16pt;
+    }
+
+    .list--header {
+        font-size: 5vw;
+    }
+
+    .select--userList,
+    .select--genre {
+        padding: 5px 5px;
+        border-radius: 4px;
+        font-size: 4vw;
+        margin-left: 20px;
+        margin-bottom: 5px;
+    }
+
+    .select--userList option {
+        font-size: 3vw;
+        padding: 0px 0px 0px 0px;
+        min-height: 0px;
     }
 }

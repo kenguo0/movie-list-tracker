@@ -1,5 +1,6 @@
 body {
     color: white; /*set all text color*/
+    font-family: "Roboto", sans-serif;
 }
 
 .movie--page {
@@ -57,19 +58,32 @@ body {
 
 .summary--header {
     padding-top: 1vw;
-    color: rgb(206, 169, 255);
+    color: #cea9ff;
 }
 
 .summary {
     font-size: 18px;
     line-height: 1.6;
+    overflow-y: auto;
+}
+
+.list--actions {
+    margin-top: 2vw;
+}
+
+.list--actions h6 {
+    font-size: 16px;
 }
 
 .user--inputs {
-    margin-top: 2vw;
     display: flex;
     flex-direction: column;
     align-items: start;
+}
+
+.user--buttons {
+    display: flex;
+    flex-direction: row;
 }
 
 .toggle--button {
@@ -103,7 +117,7 @@ body {
 }
 
 .toggle--button [type="radio"]:checked#watchlist + label[for="watched"] ~ .highlighter {
-    transform: translateX(97%);
+    transform: translateX(99%);
 }
 
 .toggle--button label {
@@ -120,7 +134,7 @@ body {
 }
 
 .toggle--button label:hover {
-    color: rgb(91, 75, 150);
+    color: rgb(206, 169, 255);
 }
 
 .toggle--button .highlighter {
@@ -132,22 +146,121 @@ body {
     transition: transform 0.2s ease-in-out;
 }
 
-.rating {
+.remove--button {
+    align-self: center;
+    height: 35px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background: rgb(199, 0, 0);
+    margin-left: 10px;
+    transition: 0.25s ease-in-out;
+    cursor: pointer;
+}
+
+.remove--button label {
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+.remove--button:hover {
+    background: rgb(146, 0, 0);
+}
+.remove--button:focus {
+    outline: none;
+}
+
+.rating--div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.rating--text {
     font-size: 24px;
     margin-bottom: 0px;
+    margin-right: 10px;
     color: rgb(206, 169, 255);
+}
+
+.select--rating {
+    font-size: 18pt;
+    border: none;
+    border-radius: 6px;
+    /* margin-left: 15px; */
+    height: 40px;
+    text-align-last: center;
+    padding: 5px;
+}
+
+.select--rating:focus {
+    outline: none;
+}
+
+.rating--options {
+    width: 20px;
+    font-size: 12pt;
+}
+
+.add--button {
+    height: 45px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background: rgb(12, 145, 0);
+    transition: 0.25s ease-in-out;
+    cursor: pointer;
+}
+
+.add--button label {
+    padding: 0px;
+    margin: 0px;
+    font-size: 18pt;
+    line-height: 20px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+.add--button:hover {
+    background: rgb(9, 107, 0);
+}
+.add--button:focus {
+    outline: none;
+}
+
+.added--message {
+    padding-top: 1vw;
+    font-size: 26px;
+    color: rgb(0, 204, 0);
 }
 
 @media screen and (max-width: 1146px) {
     .movie--container {
         width: 90vw;
-        height: 62vw;
+        height: 65vw;
         min-width: 0px;
     }
 
     .movie--poster {
         width: 40vw;
-        height: 62vw;
+        height: 65vw;
         min-width: 0px;
     }
 
@@ -161,7 +274,8 @@ body {
         font-size: 4vw;
     }
 
-    .genres {
+    .genres,
+    u {
         font-size: 1.5vw;
         margin-bottom: 2vw;
     }
@@ -175,7 +289,7 @@ body {
     .summary {
         font-size: 2vw;
         height: 20vw;
-        overflow-y: scroll;
+        overflow-y: auto;
     }
 
     /* width */
@@ -198,16 +312,38 @@ body {
         background: rgb(124, 101, 153);
     }
 
-    .toggle--button {
+    .list--actions {
+        margin-top: 1.5vw;
+    }
+
+    .list--actions h6 {
         font-size: 2vw;
     }
 
-    .rating {
+    .toggle--button {
+        font-size: 1.5vw;
+    }
+
+    .rating--text,
+    .added--message {
         font-size: 2.5vw;
+    }
+
+    .select--rating {
+        font-size: 2.5vw;
+        height: 5vw;
     }
 }
 
 @media screen and (max-width: 800px) {
+    .movie--container {
+        height: 68vw;
+    }
+
+    .list--actions {
+        margin-top: 0px;
+    }
+
     .toggle--button {
         width: 26vw;
     }
@@ -217,6 +353,40 @@ body {
         width: 14vw;
         font-size: 1.9vw;
         line-height: 4vw;
+    }
+
+    .remove--button {
+        border-radius: 5px;
+        width: 8.5vw;
+        height: 4.5vw;
+        margin-left: 8px;
+    }
+
+    .remove--button label {
+        font-size: 1.5vw;
+        line-height: 1.8vw;
+    }
+
+    .rating--div {
+        margin-bottom: 5px;
+    }
+
+    .select--rating {
+        font-size: 3vw;
+        height: 5vw;
+        padding-top: 2px;
+    }
+
+    .add--button {
+        border-radius: 5px;
+        width: 8.5vw;
+        height: 4.5vw;
+        margin-left: 8px;
+    }
+
+    .add--button label {
+        font-size: 1.5vw;
+        line-height: 1.8vw;
     }
 }
 
@@ -255,12 +425,17 @@ body {
 
     .summary {
         font-size: 3vw;
-        height: 37vw;
-        overflow-y: scroll;
+        height: 40vw;
+        /* max-height: 180px; */
+    }
+
+    .list--actions h6 {
+        font-size: 2.5vw;
+        margin: 0px;
     }
 
     .user--inputs {
-        padding-top: 10px;
+        padding-top: 6px;
         max-width: 35vw;
         display: flex;
         flex-direction: column;
@@ -269,17 +444,67 @@ body {
 
     .rating {
         font-size: 2.5vw;
-        padding-top: 10px;
         padding-left: 0px;
     }
 
+    .rating--text {
+        font-size: 4vw;
+        width: 22vw;
+        margin-right: 1vw;
+    }
+
     .toggle--button {
-        width: 28vw;
+        width: 39vw;
+        padding: 4px;
+    }
+
+    .toggle--button label {
+        width: 20vw;
+        font-size: 3vw;
+    }
+
+    .remove--button {
+        border-radius: 5px;
+        width: 11vw;
+        height: 5vw;
+        margin-left: 4px;
+        padding: 0px 0px 0px 0px;
+    }
+
+    .remove--button label {
+        font-size: 2vw;
+        line-height: 2.5vw;
     }
 
     .toggle--button .highlighter {
         top: 0.5vw;
         padding-bottom: 5vw;
         border-radius: 6px;
+    }
+
+    .select--rating {
+        font-size: 4vw;
+        max-width: 120px;
+        height: 6vw;
+        padding: 0px;
+        size: 5;
+    }
+
+    .select--rating option {
+        font-size: 3vw;
+        padding: 0px 0px 0px 0px;
+        min-height: 0px;
+    }
+
+    .add--button {
+        border-radius: 5px;
+        width: 25vw;
+        height: 8vw;
+        margin-left: 0px;
+    }
+
+    .add--button label {
+        font-size: 4vw;
+        line-height: 2.5vw;
     }
 }

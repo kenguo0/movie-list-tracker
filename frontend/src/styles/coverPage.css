@@ -1,16 +1,43 @@
 .cover--page {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.877);
     height: 91.3vh;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     background-blend-mode: multiply;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cover--title {
+    font-family: "DM Sans", sans-serif;
+    text-align: center;
+    font-size: 48pt;
+    padding-top: 15vw;
+}
+
+.cover--title span {
+    color: #b67fff;
 }
 
 .cover--message {
-    font-family: "Poppins", sans-serif;
-    font-size: 48pt;
-    text-align: left;
-    width: 800px;
-    padding-top: 10vw;
+    font-family: "Montserrat", sans-serif;
+    padding-top: 2vw;
+    font-size: 18pt;
+    text-align: center;
+}
+
+@media screen and (max-width: 550px) {
+    .cover--title {
+        width: 90vw;
+        font-size: 10vw;
+        padding-top: 30vw;
+    }
+
+    .cover--message {
+        padding-top: 5vw;
+        font-size: 4vw;
+        width: 80vw;
+    }
 }

@@ -6,9 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 
 @Entity
@@ -23,14 +21,11 @@ public class Movie {
     private Integer id;
     private String title;
     private String posterPath;
+    private String backdropPath;
+    @Column(columnDefinition="MEDIUMTEXT")
     private String summary;
     private Integer releaseYear;
     private Integer tmdbID;
-
-    @ManyToMany()
-    @JoinTable(name = "movie_genre_mapping",
-            joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "genre_id"))
-    private Set<Genre> genres = new HashSet<>();
-
+    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+    private List<String> genres;
 }

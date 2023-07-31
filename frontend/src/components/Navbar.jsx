@@ -21,6 +21,7 @@ export default function Navbar({ isLoggedIn, onLogout, apiKey }) {
         navigate("/");
         onLogout();
         setAuthenticationStatus(false);
+        localStorage.removeItem("username");
     };
 
     const closeNav = () => {
@@ -49,7 +50,9 @@ export default function Navbar({ isLoggedIn, onLogout, apiKey }) {
                                 <Search onSend={closeNav} apiKey={apiKey} />
                             </li>
                             <li>
-                                <Link to={"/mylists"}>My Lists</Link>
+                                <Link to={"/mylists"} onClick={closeNav}>
+                                    My Lists
+                                </Link>
                             </li>
                             <li>
                                 <button className="auth--button" onClick={handleLogout}>
