@@ -17,7 +17,8 @@ public class CorsConfiguration {
                         .allowedOrigins("https://watchverse-movielist.netlify.app")
                         .allowCredentials(true)
                         .allowedMethods("*")
-                        .allowedHeaders("*");
+                        .allowedHeaders("*")
+                        .exposedHeaders("*");
             }
         };
     }
