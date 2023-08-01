@@ -80,7 +80,7 @@ public class AuthController {
             cookie.setHttpOnly(true);
             cookie.setMaxAge(30 * 24 * 60 * 60);
             cookie.setSecure(true);
-            cookie.setDomain(".watchverse-movielist.netlify.app");
+            cookie.setDomain("watchverse-movielist.netlify.app");
             cookie.setPath("/");
             response.addCookie(cookie);
 
