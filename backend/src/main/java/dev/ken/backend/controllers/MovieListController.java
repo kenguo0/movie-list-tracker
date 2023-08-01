@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000", "http://10.0.0.131:3000/"}, allowCredentials = "true")
+@CrossOrigin
 @RequestMapping("/api/movie")
 public class MovieListController {
 
