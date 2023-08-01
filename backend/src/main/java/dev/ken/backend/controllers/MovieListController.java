@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@CrossOrigin
+@CrossOrigin (origins = "https://watchverse-movielist.netlify.app")
 @RequestMapping("/api/movie")
 public class MovieListController {
 

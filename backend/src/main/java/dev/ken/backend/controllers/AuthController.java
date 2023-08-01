@@ -20,7 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "https://watchverse-movielist.netlify.app")
 @RequestMapping("/api/auth")
 public class AuthController {
 
