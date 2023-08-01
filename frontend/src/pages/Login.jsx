@@ -30,7 +30,6 @@ export default function Login({ onLogin, apiURL }) {
             },
             method: "post",
             credentials: "include",
-            mode: "cors",
             body: JSON.stringify(reqBody),
         }).then((response) => {
             if (response.status === 200) {

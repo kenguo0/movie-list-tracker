@@ -18,7 +18,13 @@ export default function App() {
     const API_URL = "https://movie-list-tracker.up.railway.app";
 
     const verifyToken = () => {
-        fetch(`${API_URL}/api/auth/verify`).then((response) => {
+        fetch(`${API_URL}/api/auth/verify`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "get",
+            credentials: "include",
+        }).then((response) => {
             if (response.status !== 200) {
                 setLoggedIn(false);
                 console.log(response.text());
@@ -28,7 +34,13 @@ export default function App() {
 
     const fetchApiKey = async () => {
         try {
-            const response = await fetch(`${API_URL}/api/movie/key`);
+            const response = await fetch(`${API_URL}/api/movie/key`, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                method: "get",
+                credentials: "include",
+            });
             if (response.ok) {
                 const data = await response.text();
                 setApiKey(data);
