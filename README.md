@@ -1,4 +1,4 @@
-# WatchVerse - A movie list tracking website
+# [WatchVerse](https://watchverse-movielist.netlify.app) - A movie list tracking website
 This website aims to help you organize the movies you've watched and movies on your watchlist.
 
 ## Features
