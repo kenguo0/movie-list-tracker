@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "*", allowCredentials = "true")
+@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "Access-Control-Allow-Origin", exposedHeaders = "Access-Control-Allow-Origin", allowCredentials = "true")
 @RestController
 @RequestMapping("/api/movie")
 public class MovieListController {
