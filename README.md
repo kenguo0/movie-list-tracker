@@ -1,6 +1,6 @@
-# [WatchVerse](https://watchverse-movielist.netlify.app) - A movie list tracking website :clapper:
-This website is designed to help you organize the movies you've watched and movies on your watchlist.
-
+# WatchVerse - A movie list tracking website :clapper:
+This website is designed to help you organize the movies you've watched and movies on your watchlist.  
+[Website link](https://watchverse-movielist.netlify.app) :globe_with_meridians:
 ## Features
 - Create an account with secure password encoding
 - Login securely with strict validation and authorization 🔐
