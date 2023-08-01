@@ -4,7 +4,7 @@ import MovieCard from "../components/MovieCard";
 import { useEffect, useState } from "react";
 import "../styles/movieResults.css";
 
-export default function MyLists() {
+export default function MyLists({ apiURL }) {
     const [movieList, setMovieList] = useState([]);
     const [filteredMovieList, setFilteredMovieList] = useState([]);
     const [genreFilter, setGenreFilter] = useState("");
@@ -17,8 +17,9 @@ export default function MyLists() {
         setGenreNames(names);
 
         try {
-            fetch("/api/movie/getUserWatchedMovies", {
+            fetch(`${apiURL}/api/movie/getUserWatchedMovies`, {
                 method: "get",
+                credentials: "include",
             })
                 .then((response) => response.json())
                 .then((data) => {
@@ -41,8 +42,9 @@ export default function MyLists() {
     const handleListSelect = (e) => {
         const list = e.target.value;
         try {
-            fetch(`/api/movie/getUser${list}Movies`, {
+            fetch(`${apiURL}/api/movie/getUser${list}Movies`, {
                 method: "get",
+                credentials: "include",
             })
                 .then((response) => response.json())
                 .then((data) => {

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { saveUsername, setAuthenticationStatus } from "../utils/authLocalStorage";
 import "../styles/userForm.css";
 
-export default function Login({ onLogin }) {
+export default function Login({ onLogin, apiURL }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState();
@@ -24,15 +24,17 @@ export default function Login({ onLogin }) {
             return;
         }
 
-        fetch("/api/auth/login", {
+        fetch(`${apiURL}/api/auth/login`, {
             headers: {
                 "Content-Type": "application/json",
             },
             method: "post",
+            credentials: "include",
             body: JSON.stringify(reqBody),
         }).then((response) => {
             if (response.status === 200) {
                 setAuthenticationStatus(true);
+                console.log(response);
                 saveUsername(response.headers.get("Username"));
                 onLogin();
                 navigate("/home");

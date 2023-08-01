@@ -3,7 +3,7 @@ import { useState } from "react";
 import "../styles/userForm.css";
 import RegisterModal from "../components/RegisterModal";
 
-export default function Register() {
+export default function Register({ apiURL }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordRe, setPasswordRe] = useState("");
@@ -30,11 +30,12 @@ export default function Register() {
             setErrorMessage("Passwords do not match");
             return;
         }
-        fetch("/api/auth/register", {
+        fetch(`${apiURL}/api/auth/register`, {
             headers: {
                 "Content-Type": "application/json",
             },
             method: "post",
+            credentials: "include",
             body: JSON.stringify(reqBody),
         })
             .then((response) => {

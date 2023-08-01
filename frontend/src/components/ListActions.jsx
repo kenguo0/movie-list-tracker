@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ListActions({ movieDetails, watchStatus, rating }) {
+export default function ListActions({ movieDetails, watchStatus, rating, apiURL }) {
     const [listType, setlistType] = useState(watchStatus);
     const [userRating, setUserRating] = useState(rating);
     const [addedToList, setAddedToList] = useState(watchStatus != null);
@@ -16,11 +16,12 @@ export default function ListActions({ movieDetails, watchStatus, rating }) {
             // call api to change watch status in database
             const movieWatchStatus = e.target.value;
             try {
-                fetch(`/api/movie/updateWatchStatus/${movieDetails.tmdbID}`, {
+                fetch(`${apiURL}/api/movie/updateWatchStatus/${movieDetails.tmdbID}`, {
                     headers: {
                         "Content-Type": "application/json",
                     },
                     method: "put",
+                    credentials: "include",
                     body: movieWatchStatus,
                 }).then((response) => {
                     if (response.status === 200) {
@@ -38,11 +39,12 @@ export default function ListActions({ movieDetails, watchStatus, rating }) {
 
     const addMovieToList = () => {
         try {
-            fetch(`/api/movie/addToList`, {
+            fetch(`${apiURL}/api/movie/addToList`, {
                 headers: {
                     "Content-Type": "application/json",
                 },
                 method: "post",
+                credentials: "include",
                 body: JSON.stringify(movieDetails),
             }).then((response) => {
                 if (response.status === 200) {
@@ -58,11 +60,12 @@ export default function ListActions({ movieDetails, watchStatus, rating }) {
 
     const removeFromList = () => {
         try {
-            fetch(`/api/movie/removeFromList/${movieDetails.tmdbID}`, {
+            fetch(`${apiURL}/api/movie/removeFromList/${movieDetails.tmdbID}`, {
                 headers: {
                     "Content-Type": "application/json",
                 },
                 method: "delete",
+                credentials: "include",
             }).then((response) => {
                 if (response.status === 200) {
                     console.log("success:", response.text);
@@ -91,11 +94,12 @@ export default function ListActions({ movieDetails, watchStatus, rating }) {
         const rating = e.target.value;
         if (addedToList) {
             try {
-                fetch(`/api/movie/updateRating/${movieDetails.tmdbID}`, {
+                fetch(`${apiURL}/api/movie/updateRating/${movieDetails.tmdbID}`, {
                     headers: {
                         "Content-Type": "application/json",
                     },
                     method: "put",
+                    credentials: "include",
                     body: e.target.value,
                 }).then((response) => {
                     if (response.status === 200) {

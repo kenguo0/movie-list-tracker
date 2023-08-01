@@ -3,7 +3,7 @@ import "../styles/moviePage.css";
 import ListActions from "../components/ListActions";
 import { useEffect, useState } from "react";
 
-export default function Movie() {
+export default function Movie({ apiURL }) {
     const location = useLocation();
     const movieInfo = location.state;
     const [movieWatchStatus, setMovieWatchStatus] = useState(null);
@@ -12,11 +12,12 @@ export default function Movie() {
     useEffect(() => {
         if (movieInfo.watchStatus == null) {
             try {
-                fetch(`/api/movie/getUserMovieDetails/${movieInfo.tmdbID}`, {
+                fetch(`${apiURL}/api/movie/getUserMovieDetails/${movieInfo.tmdbID}`, {
                     headers: {
                         Accept: "application/json",
                     },
                     method: "get",
+                    credentials: "include",
                 })
                     .then((response) => {
                         if (response.status === 404) {
@@ -57,7 +58,7 @@ export default function Movie() {
                         <span style={{ color: "#cea9ff" }}>Genres: </span>
                         {movieInfo.genres.join(", ")}
                     </p>
-                    {movieWatchStatus !== null ? <ListActions movieDetails={movieInfo} watchStatus={movieWatchStatus} rating={movieRating} /> : null}
+                    {movieWatchStatus !== null ? <ListActions movieDetails={movieInfo} watchStatus={movieWatchStatus} rating={movieRating} apiURL={apiURL} /> : null}
                 </div>
             </div>
         </div>
