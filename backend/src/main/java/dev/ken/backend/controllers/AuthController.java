@@ -79,7 +79,8 @@ public class AuthController {
             final Cookie cookie = new Cookie("jwt_auth", token);
             cookie.setHttpOnly(true);
             cookie.setMaxAge(30 * 24 * 60 * 60);
-            cookie.setDomain("https://watchverse-movielist.netlify.app");
+            cookie.setSecure(true);
+            cookie.setDomain("/");
             cookie.setPath("/");
             response.addCookie(cookie);
 
