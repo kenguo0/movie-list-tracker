@@ -2,8 +2,7 @@
 This website is designed to help you organize the movies you've watched and movies on your watchlist.  
 [Website link](https://watchverse-movielist.netlify.app) :globe_with_meridians:
 ## Features
-- Create an account with secure password encoding
-- Login securely with strict validation and authorization 🔐
+- Create an account and login with secure password encoding 🔐
 - The homepage displays an updated list of currently popular movies :star2:
 - Search for movies by title :mag_right: (movie details and posters provided by [The Movie Database (TMDB)](https://www.themoviedb.org/) )
 - Add a movie to either your 'watched' list or watchlist
