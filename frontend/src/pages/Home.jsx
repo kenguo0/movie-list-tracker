@@ -7,7 +7,7 @@ export default function Home({ apiKey }) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        if (apiKey) {
+        if (apiKey !== "") {
             fetch("https://api.themoviedb.org/3/trending/movie/week", {
                 headers: {
                     accept: "application/json",
