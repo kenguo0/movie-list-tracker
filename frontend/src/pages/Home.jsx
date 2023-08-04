@@ -4,7 +4,7 @@ import "../styles/movieResults.css";
 
 export default function Home({ apiURL }) {
     const [popularMovies, setPopularMovies] = useState([]);
-    const [apiKey, setApiKey] = useState("");
+    const [apiKey, setApiKey] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -25,7 +25,7 @@ export default function Home({ apiURL }) {
     }, []);
 
     useEffect(() => {
-        if (apiKey !== "") {
+        if (apiKey !== null) {
             fetch("https://api.themoviedb.org/3/trending/movie/week", {
                 headers: {
                     accept: "application/json",
