@@ -2,34 +2,9 @@ import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import "../styles/movieResults.css";
 
-export default function Home({ apiURL }) {
+export default function Home() {
     const [popularMovies, setPopularMovies] = useState([]);
-    const [apiKey, setApiKey] = useState("");
-
-    useEffect(() => {
-        const fetchApiKey = async () => {
-            try {
-                const response = await fetch(`${apiURL}/api/movie/key`, {
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    method: "get",
-                    credentials: "include",
-                });
-                if (response.ok) {
-                    const data = await response.text();
-                    setApiKey(data);
-                } else {
-                    console.log("Could not get API key", response.text());
-                }
-            } catch (error) {
-                console.error("Error fetching API key:", error);
-            }
-        };
-
-        fetchApiKey();
-    }, []);
-
+    const apiKey = import.meta.env.VITE_TMDB_API_KEY;
     useEffect(() => {
         if (apiKey !== "") {
             fetch("https://api.themoviedb.org/3/trending/movie/week", {

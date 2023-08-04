@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { setAuthenticationStatus } from "../utils/authLocalStorage";
 import Search from "./Search";
 
-export default function Navbar({ isLoggedIn, onLogout, apiKey }) {
+export default function Navbar({ isLoggedIn, onLogout }) {
     const [isIconClicked, setIsIconClicked] = useState(false);
     const navigate = useNavigate();
 
@@ -47,7 +47,7 @@ export default function Navbar({ isLoggedIn, onLogout, apiKey }) {
                     <div className="navigation--div">
                         <ul className={isIconClicked ? "nav--links active" : "nav--links"}>
                             <li>
-                                <Search onSend={closeNav} apiKey={apiKey} />
+                                <Search onSend={closeNav} />
                             </li>
                             <li>
                                 <Link to={"/mylists"} onClick={closeNav}>

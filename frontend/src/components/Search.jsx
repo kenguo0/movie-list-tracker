@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import searchIcon from "../images/search-icon.png";
 
-export default function Search({ onSend, apiKey }) {
+export default function Search({ onSend }) {
     const [searchQuery, setSearchQuery] = useState("");
     const navigate = useNavigate();
+    const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
     const sendResults = (e) => {
         e.preventDefault();
