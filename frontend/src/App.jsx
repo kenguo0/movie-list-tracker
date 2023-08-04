@@ -34,19 +34,20 @@ export default function App() {
 
     const fetchApiKey = async () => {
         try {
-            const response = await fetch(`${API_URL}/api/movie/key`, {
+            await fetch(`${API_URL}/api/movie/key`, {
                 headers: {
                     "Content-Type": "application/json",
                 },
                 method: "get",
                 credentials: "include",
+            }).then((response) => {
+                if (response.headers.get("isAuthenticatedHeader") === "true") {
+                    const data = response.text();
+                    setApiKey(data);
+                } else {
+                    console.log("Could not get API key", response.text());
+                }
             });
-            if (response.headers.get("isAuthenticatedHeader") === "true") {
-                const data = await response.text();
-                setApiKey(data);
-            } else {
-                console.log("Could not get API key", response.text());
-            }
         } catch (error) {
             console.error("Error fetching API key:", error);
         }
