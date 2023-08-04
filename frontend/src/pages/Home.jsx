@@ -14,9 +14,9 @@ export default function Home({ apiURL }) {
             method: "get",
             credentials: "include",
         }).then((response) => {
-            if (response.headers.get("isAuthenticatedHeader") === "true") {
-                const key = response.text();
-                setApiKey(key);
+            if (response.ok) {
+                const data = response.text();
+                setApiKey(data);
             } else {
                 console.log("Could not get API key", response.text());
             }
