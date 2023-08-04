@@ -5,7 +5,7 @@ import "../styles/movieResults.css";
 export default function Home({ apiURL }) {
     const [popularMovies, setPopularMovies] = useState([]);
     const [apiKey, setApiKey] = useState("");
-    const fetchApiKey = async () => {
+    async function fetchApiKey() {
         try {
             await fetch(`${apiURL}/api/movie/key`, {
                 headers: {
@@ -24,7 +24,7 @@ export default function Home({ apiURL }) {
         } catch (error) {
             console.error("Error fetching API key:", error);
         }
-    };
+    }
 
     useEffect(() => {
         fetchApiKey();

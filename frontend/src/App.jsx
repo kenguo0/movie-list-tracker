@@ -32,7 +32,7 @@ export default function App() {
         });
     };
 
-    const fetchApiKey = async () => {
+    async function fetchApiKey() {
         try {
             await fetch(`${API_URL}/api/movie/key`, {
                 headers: {
@@ -51,7 +51,7 @@ export default function App() {
         } catch (error) {
             console.error("Error fetching API key:", error);
         }
-    };
+    }
 
     useEffect(() => {
         verifyToken();
