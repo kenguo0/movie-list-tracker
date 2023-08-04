@@ -4,30 +4,24 @@ import "../styles/movieResults.css";
 
 export default function Home({ apiURL }) {
     const [popularMovies, setPopularMovies] = useState([]);
-    const [apiKey, setApiKey] = useState("");
-    async function fetchApiKey() {
-        try {
-            await fetch(`${apiURL}/api/movie/key`, {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                method: "get",
-                credentials: "include",
-            }).then((response) => {
-                if (response.headers.get("isAuthenticatedHeader") === "true") {
-                    const data = response.text();
-                    setApiKey(data);
-                } else {
-                    console.log("Could not get API key", response.text());
-                }
-            });
-        } catch (error) {
-            console.error("Error fetching API key:", error);
-        }
-    }
 
     useEffect(() => {
-        fetchApiKey();
+        let apiKey = "";
+        fetch(`${apiURL}/api/movie/key`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "get",
+            credentials: "include",
+        }).then((response) => {
+            if (response.headers.get("isAuthenticatedHeader") === "true") {
+                const data = response.text();
+                apiKey = data;
+            } else {
+                console.log("Could not get API key", response.text());
+            }
+        });
+
         if (apiKey !== "") {
             fetch("https://api.themoviedb.org/3/trending/movie/week", {
                 headers: {
@@ -53,7 +47,7 @@ export default function Home({ apiURL }) {
                     });
             }
         }
-    }, [apiKey]);
+    }, []);
 
     return (
         <>

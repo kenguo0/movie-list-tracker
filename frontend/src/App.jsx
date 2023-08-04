@@ -32,26 +32,19 @@ export default function App() {
         });
     };
 
-    async function fetchApiKey() {
+    const fetchApiKey = async () => {
         try {
-            await fetch(`${API_URL}/api/movie/key`, {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                method: "get",
-                credentials: "include",
-            }).then((response) => {
-                if (response.headers.get("isAuthenticatedHeader") === "true") {
-                    const data = response.text();
-                    setApiKey(data);
-                } else {
-                    console.log("Could not get API key", response.text());
-                }
-            });
+            const response = await fetch("/api/movie/key");
+            if (response.ok) {
+                const data = await response.text();
+                setApiKey(data);
+            } else {
+                console.log("Could not get API key", response.text());
+            }
         } catch (error) {
             console.error("Error fetching API key:", error);
         }
-    }
+    };
 
     useEffect(() => {
         verifyToken();
