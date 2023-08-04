@@ -5,6 +5,7 @@ import "../styles/movieResults.css";
 export default function Home({ apiURL }) {
     const [popularMovies, setPopularMovies] = useState([]);
     const [apiKey, setApiKey] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetch(`${apiURL}/api/movie/key`, {
@@ -24,7 +25,7 @@ export default function Home({ apiURL }) {
     }, []);
 
     useEffect(() => {
-        if (apiKey.trim() !== "") {
+        if (apiKey !== "") {
             fetch("https://api.themoviedb.org/3/trending/movie/week", {
                 headers: {
                     accept: "application/json",
@@ -48,8 +49,14 @@ export default function Home({ apiURL }) {
                         localStorage.setItem("genresData", JSON.stringify(data.genres));
                     });
             }
+            setIsLoading(false);
         }
     }, [apiKey]);
+
+    if (isLoading) {
+        // Render a loading indicator while fetches are in progress
+        return <p>Loading...</p>;
+    }
 
     return (
         <>
