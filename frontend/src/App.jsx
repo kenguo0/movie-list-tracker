@@ -41,7 +41,7 @@ export default function App() {
                 method: "get",
                 credentials: "include",
             });
-            if (response.ok) {
+            if (response.headers.get("isAuthenticatedHeader") === "true") {
                 const data = await response.text();
                 setApiKey(data);
             } else {
