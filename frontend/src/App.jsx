@@ -66,7 +66,7 @@ export default function App() {
                 <Route path="/register" element={<Register apiURL={API_URL} />} />
                 <Route path="/login" element={<Login onLogin={() => setLoggedIn(true)} apiURL={API_URL} />} />
                 <Route element={<PrivateRoute />}>
-                    <Route element={<Home apiURL={API_URL} />} path="/home" />
+                    <Route element={<Home apiKey={apiKey} />} path="/home" />
                     <Route element={<MyLists apiURL={API_URL} />} path="/mylists" />
                     <Route element={<MovieResults />} path="/results" />
                     <Route element={<Movie apiURL={API_URL} />} path="/movie/:tmdbID" />

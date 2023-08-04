@@ -2,31 +2,12 @@ import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import "../styles/movieResults.css";
 
-export default function Home({ apiURL }) {
+export default function Home({ apiKey }) {
     const [popularMovies, setPopularMovies] = useState([]);
-    const [apiKey, setApiKey] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${apiURL}/api/movie/key`, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-            method: "get",
-            credentials: "include",
-        }).then((response) => {
-            if (response.ok) {
-                const data = response.text();
-                setApiKey(data);
-            } else {
-                console.log("Could not get API key", response.text());
-            }
-        });
-    }, []);
-
-    useEffect(() => {
-        if (apiKey !== null) {
-            console.log("apiKey: ", apiKey);
+        if (apiKey) {
             fetch("https://api.themoviedb.org/3/trending/movie/week", {
                 headers: {
                     accept: "application/json",
@@ -54,19 +35,21 @@ export default function Home({ apiURL }) {
         }
     }, [apiKey]);
 
-    if (isLoading) {
-        // Render a loading indicator while fetches are in progress
-        return <p>Loading...</p>;
-    }
-
     return (
         <>
-            <h1 className="results--header">Popular Movies</h1>
-            <div className="grid">
-                {popularMovies.map((movie) => (
-                    <MovieCard key={movie.id} {...movie} />
-                ))}
-            </div>
+            {isLoading ? (
+                <p>Loading...</p>
+            ) : (
+                <>
+                    {" "}
+                    <h1 className="results--header">Popular Movies</h1>
+                    <div className="grid">
+                        {popularMovies.map((movie) => (
+                            <MovieCard key={movie.id} {...movie} />
+                        ))}
+                    </div>
+                </>
+            )}
         </>
     );
 }
