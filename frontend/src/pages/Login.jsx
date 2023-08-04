@@ -34,7 +34,6 @@ export default function Login({ onLogin, apiURL }) {
         }).then((response) => {
             if (response.status === 200) {
                 setAuthenticationStatus(true);
-                console.log(response);
                 saveUsername(response.headers.get("Username"));
                 onLogin();
                 navigate("/home");

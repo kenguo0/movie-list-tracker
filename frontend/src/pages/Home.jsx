@@ -2,11 +2,34 @@ import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import "../styles/movieResults.css";
 
-export default function Home({ apiKey }) {
+export default function Home({ apiURL }) {
     const [popularMovies, setPopularMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [apiKey, setApiKey] = useState("");
 
     useEffect(() => {
+        const fetchApiKey = async () => {
+            try {
+                const response = await fetch(`${apiURL}/api/movie/key`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    method: "get",
+                    credentials: "include",
+                });
+                if (response.ok) {
+                    const data = await response.text();
+                    setApiKey(data);
+                } else {
+                    console.log("Could not get API key", response.text());
+                }
+            } catch (error) {
+                console.error("Error fetching API key:", error);
+            }
+        };
+
+        fetchApiKey();
+
         if (apiKey !== "") {
             fetch("https://api.themoviedb.org/3/trending/movie/week", {
                 headers: {
@@ -33,7 +56,7 @@ export default function Home({ apiKey }) {
             }
             setIsLoading(false);
         }
-    }, [apiKey]);
+    }, []);
 
     return (
         <>
