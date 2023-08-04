@@ -28,7 +28,9 @@ export default function Home({ apiURL }) {
         };
 
         fetchApiKey();
+    }, []);
 
+    useEffect(() => {
         if (apiKey !== "") {
             fetch("https://api.themoviedb.org/3/trending/movie/week", {
                 headers: {
@@ -54,7 +56,7 @@ export default function Home({ apiURL }) {
                     });
             }
         }
-    }, []);
+    }, [apiKey]);
 
     return (
         <>
