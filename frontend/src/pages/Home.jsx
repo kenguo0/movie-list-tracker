@@ -4,7 +4,6 @@ import "../styles/movieResults.css";
 
 export default function Home({ apiURL }) {
     const [popularMovies, setPopularMovies] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
     const [apiKey, setApiKey] = useState("");
 
     useEffect(() => {
@@ -54,25 +53,17 @@ export default function Home({ apiURL }) {
                         localStorage.setItem("genresData", JSON.stringify(data.genres));
                     });
             }
-            setIsLoading(false);
         }
     }, []);
 
     return (
         <>
-            {isLoading ? (
-                <p>Loading...</p>
-            ) : (
-                <>
-                    {" "}
-                    <h1 className="results--header">Popular Movies</h1>
-                    <div className="grid">
-                        {popularMovies.map((movie) => (
-                            <MovieCard key={movie.id} {...movie} />
-                        ))}
-                    </div>
-                </>
-            )}
+            <h1 className="results--header">Popular Movies</h1>
+            <div className="grid">
+                {popularMovies.map((movie) => (
+                    <MovieCard key={movie.id} {...movie} />
+                ))}
+            </div>
         </>
     );
 }
