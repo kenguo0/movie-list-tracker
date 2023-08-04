@@ -9,7 +9,7 @@ export default function Home({ apiURL }) {
     useEffect(() => {
         const fetchApiKey = async () => {
             try {
-                const response = await fetch(`${apiURL}/api/auth/verify`);
+                const response = await fetch(`${apiURL}/api/movie/key`);
                 if (response.headers.get("isAuthenticatedHeader") === "true") {
                     const data = await response.text();
                     setApiKey(data);

@@ -34,7 +34,7 @@ export default function App() {
 
     const fetchApiKey = async () => {
         try {
-            const response = await fetch(`${API_URL}/api/auth/verify`);
+            const response = await fetch(`${API_URL}/api/movie/key`);
             if (response.ok) {
                 const data = await response.text();
                 setApiKey(data);
