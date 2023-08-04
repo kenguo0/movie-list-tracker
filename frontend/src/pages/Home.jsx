@@ -24,7 +24,7 @@ export default function Home({ apiURL }) {
     }, []);
 
     useEffect(() => {
-        if (apiKey !== "") {
+        if (apiKey.trim() !== "") {
             fetch("https://api.themoviedb.org/3/trending/movie/week", {
                 headers: {
                     accept: "application/json",
