@@ -7,37 +7,25 @@ export default function Home({ apiURL }) {
     const [apiKey, setApiKey] = useState("");
 
     useEffect(() => {
-        const fetchApiKey = async () => {
-            try {
-                const response = await fetch(`${apiURL}/api/movie/key`);
-                if (response.headers.get("isAuthenticatedHeader") === "true") {
-                    const data = await response.text();
-                    setApiKey(data);
-                } else {
-                    console.log("Could not get API key", response.text());
-                }
-            } catch (error) {
-                console.error("Error fetching API key:", error);
+        fetch(`${apiURL}/api/movie/key`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "get",
+            credentials: "include",
+        }).then((response) => {
+            if (response.headers.get("isAuthenticatedHeader") === "true") {
+                const key = response.text();
+                setApiKey(key);
+            } else {
+                console.log("Could not get API key", response.text());
             }
-        };
-
-        fetchApiKey();
+        });
     }, []);
 
     useEffect(() => {
-        fetch("https://api.themoviedb.org/3/trending/movie/week", {
-            headers: {
-                accept: "application/json",
-                Authorization: "Bearer ".concat(apiKey),
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                setPopularMovies(data.results);
-            });
-
-        if (localStorage.getItem("genresData") === null) {
-            fetch("https://api.themoviedb.org/3/genre/movie/list", {
+        if (apiKey !== "") {
+            fetch("https://api.themoviedb.org/3/trending/movie/week", {
                 headers: {
                     accept: "application/json",
                     Authorization: "Bearer ".concat(apiKey),
@@ -45,8 +33,21 @@ export default function Home({ apiURL }) {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    localStorage.setItem("genresData", JSON.stringify(data.genres));
+                    setPopularMovies(data.results);
                 });
+
+            if (localStorage.getItem("genresData") === null) {
+                fetch("https://api.themoviedb.org/3/genre/movie/list", {
+                    headers: {
+                        accept: "application/json",
+                        Authorization: "Bearer ".concat(apiKey),
+                    },
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        localStorage.setItem("genresData", JSON.stringify(data.genres));
+                    });
+            }
         }
     }, [apiKey]);
 
