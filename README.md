@@ -11,3 +11,6 @@ This website is designed to help you organize the movies you've watched and movi
 - Filter through your movie lists by genre
 - Easily change your movie between lists with a toggle
 - Website is mobile-friendly with responsive UI :iphone:
+  
+| :exclamation:  After registeration/login, you may need to refresh the page before seeing results.   |
+|-----------------------------------------|
