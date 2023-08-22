@@ -1,6 +1,8 @@
 # WatchVerse - A movie list tracking website :clapper:
 This website is designed to help you organize the movies you've watched and movies on your watchlist.  
 [Website link](https://watchverse-movielist.netlify.app) :globe_with_meridians:
+| :exclamation:  After registeration/login, you may need to refresh the page before seeing results.   |
+|-----------------------------------------|
 ## Features
 - Create an account and login with secure password encoding 🔐
 - The homepage displays an updated list of currently popular movies :star2:
@@ -12,5 +14,4 @@ This website is designed to help you organize the movies you've watched and movi
 - Easily change your movie between lists with a toggle
 - Website is mobile-friendly with responsive UI :iphone:
   
-| :exclamation:  After registeration/login, you may need to refresh the page before seeing results.   |
-|-----------------------------------------|
+
