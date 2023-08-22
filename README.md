@@ -15,3 +15,9 @@ This website is designed to help you organize the movies you've watched and movi
 - Website is mobile-friendly with responsive UI :iphone:
   
 
+
+## Website Demo
+
+
+https://github.com/kenguo0/movie-list-tracker/assets/92478370/ebf4f573-4bc6-49e4-a348-b2461f2e81ce
+
